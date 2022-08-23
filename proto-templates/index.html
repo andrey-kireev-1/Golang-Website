@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <link href="../static/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="../static/css/mystyle.css" type="text/css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e06f84e9d8.js" crossorigin="anonymous"></script>
+    <link href="/examples/vendors/fontawesome-5/css/fontawesome-all.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body style='font-family: "Century Gothic"; background-color: #1A1A1D;'>
+    <header class="p-3 text-white" style="background-color: #1A1A1D;">
+      <nav class="container navbar navbar-expand-lg navbar-dark" aria-label="Third navbar example" style="background-color: #1A1A1D;">
+        <div class="container-fluid">
+          
+          <div class="collapse navbar-collapse navbar-nav me-auto mb-2 mb-sm-0 w-30"></div>
+          <a class="navbar-brand w-30 text-center m-0 p-0" href="/"><h1 style="letter-spacing: 0.3em; color: #C3073F;">KIREEV</h1></a>
+          <div class="collapse navbar-collapse w-30 justify-content-end" id="navbarsExample03">
+            
+            <form class="navbar-nav w-50 me-4 mt-3 mb-3" id="search">
+              <input class="form-control" type="text" placeholder="Поиск" aria-label="Search">
+            </form>
+            <a class="navbar-nav w-25 text-decoration-none mt-3 mb-3" href="/login"><button type="button" class="btn"  id="login-btn">Войти</button></a>
+          </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation" id="burger-btn">
+            <span  class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+      </nav>
+    </header>
+    <div class="container" style="background-color: #1A1A1D;">
+      <div class="d-flex justify-content-end">
+          <a href="/add_article"><button type="button" class="btn btn-icon" id="add-btn">
+            <span class="icon"><i class="fa-solid fa-plus"></i></span>Добавить статью
+          </button></a>
+      </div>
+      
+      <div class="card mt-3 mb-3 text-light" style="border-color: #28282b; background-color: #28282b;">
+        <div class="card-body" style="background-color: #28282b;">
+          <h5 class="card-title">{{.auth}}</h5>
+          <p class="card-text">{{.name}}</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+        <div class="row justify-content-center">
+          <img src="../static/img/no_image.jpg" class="img-fluid w-60" alt="..." >
+        </div>
+        <div class="btn w-10" id="{{.Id}}">
+          <button type="button" class="btn like" data-id="{{.Id}}"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 45.743 45.743" style="fill:#C3073F" xml:space="preserve">
+            <g>
+              <path d="M34.199,3.83c-3.944,0-7.428,1.98-9.51,4.997c0,0-0.703,1.052-1.818,1.052c-1.114,0-1.817-1.052-1.817-1.052   c-2.083-3.017-5.565-4.997-9.51-4.997C5.168,3.83,0,8.998,0,15.376c0,1.506,0.296,2.939,0.82,4.258   c3.234,10.042,17.698,21.848,22.051,22.279c4.354-0.431,18.816-12.237,22.052-22.279c0.524-1.318,0.82-2.752,0.82-4.258   C45.743,8.998,40.575,3.83,34.199,3.83z"/>
+            </g>
+            </svg> 12</button>
+            <button type="button" class="btn like-pressed" data-id="{{.Id}}"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 45.743 45.743" style="fill:#C3073F" xml:space="preserve">
+              <g>
+                <path d="M34.199,3.83c-3.944,0-7.428,1.98-9.51,4.997c0,0-0.703,1.052-1.818,1.052c-1.114,0-1.817-1.052-1.817-1.052   c-2.083-3.017-5.565-4.997-9.51-4.997C5.168,3.83,0,8.998,0,15.376c0,1.506,0.296,2.939,0.82,4.258   c3.234,10.042,17.698,21.848,22.051,22.279c4.354-0.431,18.816-12.237,22.052-22.279c0.524-1.318,0.82-2.752,0.82-4.258   C45.743,8.998,40.575,3.83,34.199,3.83z"/>
+              </g>
+              </svg> 12</button>
+        </div> 
+        <script>
+          var btn_up = document.querySelector('.btn_up');
+          var btn_down = document.querySelector('.btn_down');
+      
+          function myFunction(elem){
+              elem.classList.toggle('clicked');
+              if(elem === btn_up){
+                  btn_down.classList.remove('clicked');
+              }else{
+                  btn_up.classList.remove('clicked');
+              }
+          }
+      </script>
+      </div>
+      <div class="card mt-3 mb-3 text-light" style="border-color: #28282b; background-color: #28282b;">
+        <div class="card-body" style="background-color: #28282b;">
+          <h5 class="card-title">{{.auth}}</h5>
+          <p class="card-text">{{.email}}</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+        <div class="row justify-content-center">
+          <img src="../static/img/no_image.jpg" class="img-fluid w-60" alt="..." >
+        </div>
+      </div>
+    </div>
+    <script src="../static/js/bootstrap.js"></script>
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+</html>

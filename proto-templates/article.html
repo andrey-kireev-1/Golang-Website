@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <link href="../static/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="../static/css/mystyle.css" type="text/css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body style='font-family: "Century Gothic"; background-color: #1A1A1D;'>
+    <header class="p-3 text-white" style="background-color: #1A1A1D;">
+      <nav class="container navbar navbar-expand-lg navbar-dark" aria-label="Third navbar example" style="background-color: #1A1A1D;">
+        <div class="container-fluid">
+          
+          <div class="collapse navbar-collapse navbar-nav me-auto mb-2 mb-sm-0 w-30"></div>
+          <a class="navbar-brand w-30 text-center m-0 p-0" href="/"><h1 style="letter-spacing: 0.3em; color: #C3073F;">KIREEV</h1></a>
+          <div class="collapse navbar-collapse w-30 justify-content-end" id="navbarsExample03">
+            
+            <form class="navbar-nav w-50 me-4 mt-3 mb-3" id="search">
+              <input class="form-control" type="text" placeholder="Поиск" aria-label="Search">
+            </form>
+            <a class="navbar-nav w-25 text-decoration-none mt-3 mb-3" href="/login"><button type="button" class="btn"  id="login-btn">Войти</button></a>
+          </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation" id="burger-btn">
+            <span  class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+      </nav>
+    </header>
+    <div class="container" style="background-color: #1A1A1D;">    
+      <div class="card mt-3 mb-3 text-light" style="border-color: #28282b; background-color: #28282b;">
+        <div class="card-body" style="background-color: #28282b;">
+          <h5 class="card-title">{{.auth}}</h5>
+          <p class="card-text">{{.name}}</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+        <div class="row justify-content-center">
+          <img src="../static/img/no_image.jpg" class="img-fluid w-60" alt="..." >
+        </div>
+      </div>
+      <hr>
+      <h4 class="form-label">Комментарии:</h4>
+      <div class="card mb-3 text-light" style="background-color:#1A1A1D;">
+        <div class="row">
+        <div class="m-2" style="width: 120px;">
+            <div class="flex-shrink-0">
+                <img src="../static/img/default-avatar.png" style="width: 120px; border-radius: 10px;" />
+            </div>
+        </div>
+        <div class="m-2 w-60 form-label">
+            <div class="flex-grow-1 ms-3">
+                <h6 class="mb-1">{{.Profile.Name}} {{.Profile.Surname}}</h6>
+                
+                <div class="d-flex justify-content-start rounded-3 p-2 mb-2 bg mt-3 " style="background-color: #28282b;">
+                <p>Phasellus laoreet eleifend consectetur. Phasellus ullamcorper sapien risus, vitae blandit augue consectetur at. Pellentesque varius tincidunt elit vitae imperdiet. Maecenas luctus, nibh eget vulputate tristique, enim augue accumsan leo, ac tempor nunc magna a lacus. Ut condimentum purus at libero ullamcorper, quis laoreet nunc fringilla. Suspendisse elementum convallis augue, quis cursus nisi fermentum sed. Proin porta bibendum placerat. Praesent viverra nisi ut efficitur molestie. Ut eu rutrum ligula. Etiam libero risus, tincidunt et leo ut, tempor mattis erat. Praesent eu efficitur quam. Maecenas nec ligula vitae odio pulvinar posuere. Mauris pulvinar eleifend bibendum. Cras quis felis faucibus, aliquam metus ut, porta eros.</p>
+
+                </div>
+                
+            </div>
+        </div>
+        </div>
+    </div>
+      <hr>
+      <form action="/article/{{.OneArticle.Id}}" method="POST" class="form">
+        <div class="form-group mt-3 mb-3">
+            <label for="textarea-form" class="form-label">Добавьте комментарий</label>
+            <textarea class="form-control" rows="6" id="textarea-form" placeholder="Текст . . ."></textarea>
+        </div>  
+        <div class="form-group mt-3 mb-3">
+          <button type="submit" class="form-control btn w-40" id="login-btn">Отправить</button>
+        </div>
+      </form>
+    </div>
+    <script src="../static/js/bootstrap.js"></script>
+  </body>
+</html>

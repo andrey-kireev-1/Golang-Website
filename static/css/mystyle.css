@@ -1,0 +1,350 @@
+.hpx-25{
+    height: 25px;
+}
+.hpx-50{
+    height: 50px;
+}
+.hpx-75{
+    height: 75px;
+}
+.hpx-100{
+    height: 100px;
+}
+.hpx-125{
+    height: 125px;
+}
+.hpx-150{
+    height: 150px;
+}
+.hpx-175{
+    height: 175px;
+}
+.hpx-200{
+    height: 200px;
+}
+.hpx-250{
+    height: 250px;
+}
+.hpx-300{
+    height: 300px;
+}
+.hpx-350{
+    height: 350px;
+}
+.hpx-400{
+    height: 400px;
+}
+.hpx-450{
+    height: 450px;
+}
+.hpx-500{
+    height: 500px;
+}
+.hpx-550{
+    height: 550px;
+}
+.hpx-600{
+    height: 600px;
+}
+.hpx-650{
+    height: 650px;
+}
+.hpx-700{
+    height: 700px;
+}
+.hpx-750{
+    height: 750px;
+}
+.hpx-800{
+    height: 800px;
+}
+.hpx-850{
+    height: 850px;
+}
+
+
+.h-5{
+    height: 5%;
+}
+.h-10{
+    height: 10%;
+}
+.h-15{
+    height: 15%;
+}
+.h-20{
+    height: 20%;
+}
+.h-25{
+    height: 25%;
+}
+.h-30{
+    height: 30%;
+}
+.h-35{
+    height: 35%;
+}
+.h-40{
+    height: 40%;
+}
+.h-45{
+    height: 45%;
+}
+.h-50{
+    height: 50%;
+}
+.h-55{
+    height: 55%;
+}
+.h-60{
+    height: 60%;
+}
+.h-65{
+    height: 65%;
+}
+.h-70{
+    height: 70%;
+}
+.h-75{
+    height: 75%;
+}
+.h-80{
+    height: 80%;
+}
+.h-85{
+    height: 85%;
+}
+.h-90{
+    height: 90%;
+}
+.h-95{
+    height: 95%;
+}
+.h-100{
+    height: 100%;
+}
+
+.w-5{
+    width: 5%;
+}
+.w-10{
+    width: 10%;
+}
+.w-15{
+    width: 15%;
+}
+.w-20{
+    width: 20%;
+}
+.w-25{
+    width: 25%;
+}
+.w-30{
+    width: 30%;
+}
+.w-35{
+    width: 35%;
+}
+.w-40{
+    width: 40%;
+}
+.w-45{
+    width: 45%;
+}
+.w-50{
+    width: 50%;
+}
+.w-55{
+    width: 55%;
+}
+.w-60{
+    width: 60%;
+}
+.w-65{
+    width: 65%;
+}
+.w-70{
+    width: 70%;
+}
+.w-75{
+    width: 75%;
+}
+.w-80{
+    width: 80%;
+}
+.w-85{
+    width: 85%;
+}
+.w-90{
+    width: 90%;
+}
+.w-95{
+    width: 95%;
+}
+.w-100{
+    width: 100%;
+}
+
+.greyl{
+    color: #424244;
+    transition: 0.3s;
+}
+
+.greyl:hover { 
+    color: #1A1A1D;
+}
+.greyl:active { 
+    color: #1A1A1D;
+}
+
+#login-btn{
+    color: #C3073F; 
+    border: 2px solid; 
+    border-radius: 3px; 
+    transition: 0.3s;
+}
+#login-btn:hover { 
+    background: #6F2232; 
+}
+#login-btn:active { 
+    background: #C3073F; 
+}
+
+#ch-btn{
+    color: #C3073F; 
+    border: 2px solid; 
+    border-radius: 3px; 
+    transition: 0.3s;
+}
+#ch-btn:hover { 
+    background: #6F2232; 
+}
+#ch-btn:active { 
+    background: #C3073F; 
+}
+
+#add-btn{
+    color: #C3073F; 
+    border: 2px solid; 
+    border-radius: 3px; 
+    transition: 0.3s;
+}
+#add-btn:hover { 
+    background: #6F2232; 
+}
+#add-btn:active { 
+    background: #C3073F; 
+}
+
+.form-label{
+    color: rgb(225, 225, 225);
+    
+}
+
+.like{
+    color: #C3073F; 
+    border: 2px solid; 
+    border-radius: 3px; 
+    transition: 0.3s;
+}
+.like:hover { 
+    border-color: #C3073F;
+    background: #6F2232; 
+}
+.like:active { 
+    background: #C3073F; 
+}
+
+.like-pressed{
+    color: #28282b;
+    background: #C3073F; 
+    border: 2px solid; 
+    border-color: #C3073F;
+    border-radius: 3px; 
+    transition: 0.3s;
+}
+.like-pressed:hover { 
+    border-color: #C3073F;
+    background: #6F2232; 
+}
+.like-pressed:active { 
+    background: #C3073F; 
+}
+
+.like2{
+    color: #C3073F; 
+    border: 2px solid; 
+    border-radius: 3px; 
+    transition: 0.3s;
+}
+.like2:hover { 
+    border-color: #C3073F;
+    background: #000000; 
+}
+
+.delete-comment-btn{
+    color: #C3073F; 
+    border: 2px solid; 
+    border-radius: 3px; 
+    transition: 0.3s;
+}
+.delete-comment-btn:hover { 
+    background: #6F2232; 
+}
+.delete-comment-btn:active { 
+    background: #C3073F; 
+}
+
+.delete-article-btn{
+    color: #C3073F; 
+    border: 2px solid; 
+    border-radius: 3px; 
+    transition: 0.3s;
+}
+.delete-article-btn:hover { 
+    background: #6F2232; 
+}
+.delete-article-btn:active { 
+    background: #C3073F; 
+}
+
+
+
+.pagination > li > a
+{
+    border: 2px solid; 
+    border-radius: 3px; 
+    transition: 0.3s;
+    background-color: #1A1A1D !important;
+    color: #C3073F !important;
+    border-color: #C3073F !important;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    background-color: #6F2232 !important;
+    border-color: #C3073F !important;
+}
+
+.pagination > .active > a
+{
+    background-color: #6F2232 !important;
+    border-color: #C3073F !important;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: #6F2232 !important;
+}
+
+.link{
+    color: #C3073F;
+    transition: 0.3s;
+}
+
+.link:hover{
+    color: #6F2232;
+}

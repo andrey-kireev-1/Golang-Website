@@ -1,0 +1,45 @@
+{{template "base_auth" .}}
+{{define "title"}}Добавить статью{{end}}
+{{define "main"}}
+<div class="container">
+        <div class="row justify-content-start">
+          <div class="col-md-8">
+            <div class="wrap">
+              
+                <div class="login-wrap p-4 p-md-5">
+                  <div class="d-flex">
+                    <div class="w-100">
+                      <h3 class="mb-2" style="color: #C3073F;">Добавить статью</h3>
+                    </div>
+                  
+                  </div>
+                    {{if eq .ErrorType "1"}}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Заголовок должен быть заполнен</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+                    </div>
+                    {{end}}
+                  <form enctype="multipart/form-data" action="/add_article" method="POST" class="signin-form">
+                    <div class="form-group mt-3 mb-3">
+                        <label for="title-form" class="form-label">Добавьте заголовок статьи</label>
+                        <input class="form-control" type="text" id="title-form" placeholder="Заголовок . . ." aria-label="deafult input example" name="title">
+                    </div>
+                    <div class="form-group mt-3 mb-3">
+                        <label for="textarea-form" class="form-label">Введите текст</label>
+                        <textarea class="form-control" rows="6" id="textarea-form" placeholder="Текст . . ." name="text"></textarea>
+                    </div>  
+                    <div class="form-group mt-3 mb-3">
+                        <label for="ch-btn" class="form-label">Прикрепите изображение к статье при необходимости</label>  
+                        <input type="file" class="form-file-input" accept="image/png, image/jpeg" id="ch-btn" name="pic-file">
+                    </div>
+                    <div class="form-group mt-3 mb-3">
+                      <button type="submit" class="form-control btn w-40" id="login-btn">Подтвердить</button>
+                    </div>
+                  </form>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+{{end}}

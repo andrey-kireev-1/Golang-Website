@@ -1,0 +1,58 @@
+{{if eq .Auth "false" }}
+{{template "base_not_auth" .}}
+{{else}}
+{{template "base_auth" .}}
+{{end}}
+{{define "title"}}{{.Profile.Name}} {{.Profile.Surname}}{{end}}
+{{define "main"}}
+<section>
+        <div class="container mt-5">
+            <div class="card mb-3 form-label" style="background-color:#1A1A1D; border-color:#C3073F; border-radius: 15px; border-width: 2px;">
+                <div class="row">
+                <div class="col-md-2 m-4">
+                    <div class="flex-shrink-0">
+                        <img src="{{.Profile.PhotoPath}}" class="img-fluid" style="width: 180px; border-radius: 10px;" />
+                    </div>
+                </div>
+                <div class="col-md-6 m-4">
+                    <div class="flex-grow-1 ms-3">
+                        <h5 class="mb-1">{{.Profile.Name}} {{.Profile.Surname}}</h5>
+                        <p class="mb-2 pb-1">
+                        {{.Profile.Nick}}
+                        </p>
+                        <p class="mb-2 pb-1">
+                        {{.Profile.Email}}
+                        </p>
+                        <div class="d-flex justify-content-start rounded-3 p-2 mb-2 w-60" style="background-color: #28282b;">
+                        <div>
+                            <p class="small text-muted mb-1">
+                            Статьи
+                            </p>
+                            <p class="mb-0">{{.CntArticles}}</p>
+                        </div>
+                        <div class="px-3">
+                            <p class="small text-muted mb-1">
+                            Комменты
+                            </p>
+                            <p class="mb-0">{{.CntComments}}</p>
+                        </div>
+                        </div>
+                        {{if eq .User.Id .Profile.Id }}
+                        <div class="d-flex pt-1 w-75">
+                        <a href="/settings"><button type="button" id="ch-btn" class="btn btn-outline-primary me-1 flex-grow-1">
+                            Изменить профиль
+                        </button></a>
+                        </div>
+                        <form class="d-flex pt-1 w-75" action="/delete_profile/{{.User.Id}}" method="POST">
+                        <button type="submit" class="btn btn-icon delete-article-btn">Удалить профиль</button>
+                        </form>
+                        {{else}}
+                        {{end}}
+                        
+                    </div>
+                </div>
+                </div>
+            </div>
+      </div>
+      </section>
+{{end}}

@@ -1,0 +1,91 @@
+{{if eq .Auth "false" }}
+{{template "base_not_auth" .}}
+{{else}}
+{{template "base_auth" .}}
+{{end}}
+{{define "title"}}{{.OneArticle.Title}}{{end}}
+{{define "main"}}
+<div class="container" style="background-color: #1A1A1D;">
+    {{if eq .Auth "false" }}
+    <div class="alert alert-dark alert-dismissible fade show" role="alert">
+        <a class="text-decoration-none greyl" href="/login"><strong>Войдите</a></strong> или <strong><a class="text-decoration-none greyl" href="/signup">Зарегистрируйтесь</a></strong> чтобы добавлять и комментировать статьи!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+    </div>
+    {{end}}
+    {{if eq .OneArticle.IsAuthor true }}
+    <form class="d-flex justify-content-end" action="/delete_article/{{.OneArticle.Id}}" method="POST">
+      <button type="submit" class="btn btn-icon delete-article-btn">Удалить</button>
+    </form>
+    <form class="d-flex justify-content-end">
+      <a href="/edit_article/{{.OneArticle.Id}}"><button type="button" class="btn btn-icon delete-article-btn">Редактировать</button></a>
+    </form>
+    {{end}}
+    <div class="card mt-3 mb-3 text-light" style="border-color: #28282b; background-color: #28282b;">
+      <div class="card-body" style="background-color: #28282b;">
+        <h3 class="card-title"><strong>{{.OneArticle.Title}}</strong></h3>
+        <p class="card-text mt-2 check-anch" style="white-space: pre-wrap;">{{.OneArticle.Text}}</p>
+        
+        <p class="card-text"><small class="text-muted">Автор: <a class="text-decoration-none link" href="/profiles/{{.Profile.Nick}}">{{.Profile.Name}} {{.Profile.Surname}}</a></small></p>
+        <p class="card-text"><small class="text-muted">{{.OneArticle.Date}}</small></p>
+      </div>
+        <div class="row justify-content-center">
+        {{if eq .OneArticle.Picture ""}}
+        {{else}}
+        <img src="{{.OneArticle.Picture}}" class="img-fluid w-60" alt="..." >
+        {{end}}
+        </div>
+    </div>
+    <hr>
+    <h4 class="form-label">Комментарии:</h4>
+      {{range .Comments}}
+      <div class="card mb-3 text-light" style="background-color:#1A1A1D; border-color:#1A1A1D;">
+        <div class="row">
+        <div class="m-2" style="width: 120px;">
+            <div class="flex-shrink-0">
+                <img src="{{.AuthorPhotoPath}}" style="width: 120px; border-radius: 10px;" />
+            </div>
+        </div>
+        <div class="m-2 w-60 form-label">
+            <div class="flex-grow-1 ms-3">
+                <h6 class="mb-1"><a class="text-decoration-none link" href="/profiles/{{.AuthorNick}}">{{.AuthorName}} {{.AuthorSurname}}</a></h6>
+                
+                <div class="d-flex justify-content-start rounded-3 p-2 mb-2 bg mt-3 " style="background-color: #28282b;">
+                <p class="check-anch" style="white-space: pre-wrap;">{{.Text}}</p>
+                
+                </div>
+                {{if eq .IsAuthor true}}
+                <form class="d-flex justify-content-end" action="/delete_comment/{{.Id}}" method="POST">
+                      <button type="submit" class="btn btn-icon delete-comment-btn">Удалить</button>
+                </form>
+                {{end}}
+            </div>
+        </div>
+        </div>
+    </div>
+    {{end}}
+    <hr>
+    {{if eq .ErrorType "1"}}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Комментарий не может быть пустым</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+                    </div>
+    {{end}}
+      <form action="/article/{{.OneArticle.Id}}" method="POST" class="form">
+        <div class="form-group mt-3 mb-3">
+            <label for="textarea-form" class="form-label">Добавьте комментарий</label>
+            {{if eq .Auth "false" }}
+            <textarea class="form-control" rows="6" id="textarea-form" placeholder="Текст . . ." name="text" disabled></textarea>
+            {{else}}
+            <textarea class="form-control" rows="6" id="textarea-form" placeholder="Текст . . ." name="text"></textarea>
+            {{end}}
+        </div>  
+        <div class="form-group mt-3 mb-3">
+        {{if eq .Auth "false" }}
+          <button type="submit" class="form-control btn w-40" id="login-btn" disabled>Отправить</button>
+        {{else}}
+          <button type="submit" class="form-control btn w-40" id="login-btn">Отправить</button>
+        {{end}}
+        </div>
+      </form>
+</div>  
+{{end}}

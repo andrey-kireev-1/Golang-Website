@@ -1,0 +1,45 @@
+{{template "base_not_auth" .}}
+{{define "title"}}Войти{{end}}
+{{define "main"}}
+    <section class="ftco-section mt-3">
+      <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-5">
+          <div class="wrap">
+            
+              <div class="login-wrap p-4 p-md-5">
+                <div class="d-flex">
+                  <div class="w-100">
+                    <h3 class="mb-4" style="color: #C3073F;">Войти</h3>
+                  </div>
+                
+                </div>
+                {{if eq .ErrorType "1"}}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <strong>Почта и пароль не совпадают!</strong>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+                </div>
+                {{end}}
+                <form action="/login" method="POST" class="signin-form">
+                  <div class="form-group mt-3 mb-3">
+                    <input type="text" class="form-control" required placeholder="Email" name="email">
+                  </div>
+                  <div class="form-group mt-3 mb-3">
+                    <input id="password-field" type="password" class="form-control" required placeholder="Пароль" name="password">
+                  </div>
+                  <div class="form-group mt-3 mb-3">
+                    <button type="submit" class="form-control btn" id="login-btn">Подтвердить</button>
+                  </div>
+                </form>
+                <div class="d-flex justify-content-between">
+                  <p class="text-center text-light">Ещё не зарегистрированы?</p>
+                  <a data-toggle="tab" href="/signup" style="color: #C3073F;">Присоединиться!</a>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{{end}}

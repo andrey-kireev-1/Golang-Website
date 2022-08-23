@@ -1,0 +1,14 @@
+{{if eq .Auth "false" }}
+{{template "base_not_auth" .}}
+{{else}}
+{{template "base_auth" .}}
+{{end}}
+{{define "title"}}Kireev блог{{end}}
+{{define "main"}}
+<div class="container" style="background-color: #1A1A1D;">
+        <div class="text-light text-center mt-5">
+            <h2>Этой страницы не существует :(</h2>
+        </div>
+      
+</div>
+{{end}}

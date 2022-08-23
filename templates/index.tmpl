@@ -1,0 +1,143 @@
+{{if eq .Auth "false" }}
+{{template "base_not_auth" .}}
+{{else}}
+{{template "base_auth" .}}
+{{end}}
+{{define "title"}}Kireev блог{{end}}
+{{define "main"}}
+<div class="container" style="background-color: #1A1A1D;">
+    {{if eq .Auth "false" }}
+    <div class="alert alert-dark alert-dismissible fade show" role="alert">
+        <a class="text-decoration-none greyl" href="/login"><strong>Войдите</a></strong> или <strong><a class="text-decoration-none greyl" href="/signup">Зарегистрируйтесь</a></strong> чтобы добавлять и комментировать статьи!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
+    </div>
+    {{else}}
+    <div class="d-flex justify-content-end">
+          <a href="/add_article"><button type="button" class="btn btn-icon" id="add-btn">
+            <span class="icon"><i class="fa-solid fa-plus"></i></span>  Добавить статью
+          </button></a>
+    </div>
+    {{end}}
+    {{if eq .Auth "false"}}
+    {{range .Articles}}
+    <div class="card mt-3 mb-3 text-light" style="border-color: #28282b; background-color: #28282b;">
+      <div class="card-body" style="background-color: #28282b;">
+        <h3 class="card-title"><a class="text-decoration-none link" href="/article/{{.Id}}"><strong>{{.Title}}</strong></a></h3>
+        <p class="card-text mt-2 check-anch" style="white-space: pre-wrap;">{{.Text}}</p>
+        <p class="card-text"><small class="text-muted">{{.Date}}</small></p>
+      </div>
+      <div class="row justify-content-center">
+        {{if eq .Picture ""}}
+        {{else}}
+        <img src="{{.Picture}}" class="img-fluid w-60" alt="..." >
+        {{end}}
+      </div>
+      <div>
+        <button type="button" class="btn like2 mt-2" title="Войдите или Зарегистрируйтесь"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 45.743 45.743" style="fill:#C3073F;" xml:space="preserve">
+              <g>
+                <path d="M34.199,3.83c-3.944,0-7.428,1.98-9.51,4.997c0,0-0.703,1.052-1.818,1.052c-1.114,0-1.817-1.052-1.817-1.052   c-2.083-3.017-5.565-4.997-9.51-4.997C5.168,3.83,0,8.998,0,15.376c0,1.506,0.296,2.939,0.82,4.258   c3.234,10.042,17.698,21.848,22.051,22.279c4.354-0.431,18.816-12.237,22.052-22.279c0.524-1.318,0.82-2.752,0.82-4.258   C45.743,8.998,40.575,3.83,34.199,3.83z"/>
+              </g>
+        </svg> {{.CntLikes}}</button> 
+      </div>
+    </div>  
+    {{end}}
+    {{else}}
+    {{range .Articles}}
+    <div class="card mt-3 mb-3 text-light" style="border-color: #28282b; background-color: #28282b;">
+      <div class="card-body" style="background-color: #28282b;">
+        <h3 class="card-title"><a class="text-decoration-none link" href="/article/{{.Id}}"><strong>{{.Title}}</strong></a></h3>
+        <p class="card-text mt-2 check-anch" style="white-space: pre-wrap;">{{.Text}}</p>
+        <p class="card-text"><small class="text-muted">{{.Date}}</small></p>
+      </div>
+      <div class="row justify-content-center">
+        {{if eq .Picture ""}}
+        {{else}}
+        <img src="{{.Picture}}" class="img-fluid w-60" alt="..." >
+        {{end}}
+      </div>
+      {{if eq .Liked true}}
+      <div id="{{.Id}}">
+        <button type="button" class="btn like-pressed mt-2" data-id="{{.Id}}_{{.CntLikes}}"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 45.743 45.743" style="fill:#28282b;" xml:space="preserve">
+              <g>
+                <path d="M34.199,3.83c-3.944,0-7.428,1.98-9.51,4.997c0,0-0.703,1.052-1.818,1.052c-1.114,0-1.817-1.052-1.817-1.052   c-2.083-3.017-5.565-4.997-9.51-4.997C5.168,3.83,0,8.998,0,15.376c0,1.506,0.296,2.939,0.82,4.258   c3.234,10.042,17.698,21.848,22.051,22.279c4.354-0.431,18.816-12.237,22.052-22.279c0.524-1.318,0.82-2.752,0.82-4.258   C45.743,8.998,40.575,3.83,34.199,3.83z"/>
+              </g>
+        </svg> {{.CntLikes}}</button> 
+      </div>
+    </div>
+      {{else}}
+      <div id="{{.Id}}">
+        <button type="button" class="btn like mt-2" data-id="{{.Id}}_{{.CntLikes}}"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 45.743 45.743" style="fill:#C3073F;" xml:space="preserve">
+              <g>
+                <path d="M34.199,3.83c-3.944,0-7.428,1.98-9.51,4.997c0,0-0.703,1.052-1.818,1.052c-1.114,0-1.817-1.052-1.817-1.052   c-2.083-3.017-5.565-4.997-9.51-4.997C5.168,3.83,0,8.998,0,15.376c0,1.506,0.296,2.939,0.82,4.258   c3.234,10.042,17.698,21.848,22.051,22.279c4.354-0.431,18.816-12.237,22.052-22.279c0.524-1.318,0.82-2.752,0.82-4.258   C45.743,8.998,40.575,3.83,34.199,3.83z"/>
+              </g>
+        </svg> {{.CntLikes}}</button> 
+      </div>
+    </div>
+      {{end}}
+      
+    {{end}}
+    {{end}}
+    
+    <script>
+				  
+				   var sendLikeRequest = function(id) {
+           var sharp = "#"
+           var a = id.split('_')[0];
+           var id_block = sharp.concat(a)
+					$.ajax({
+						url: '/',
+						type: 'post',
+						data : { ajax_post_data: id},
+						success : function(data) {
+						  $(id_block).html(data);
+						},
+					  });
+					};
+
+          var sendUnLikeRequest = function(id) {
+           var sharp = "#"
+           var a = id.split('_')[0];
+           var id_block = sharp.concat(a)
+					$.ajax({
+						url: '/',
+						type: 'post',
+						data : { ajax_post_data: id},
+						success : function(data) {
+						  $(id_block).html(data);
+						},
+					  });
+					};
+
+				  $(document).on('click', '.like', function(e) {
+					e.preventDefault();
+					sendLikeRequest($(this).data('id'));
+					});
+          $(document).on('click', '.like-pressed', function(e) {
+					e.preventDefault();
+					sendUnLikeRequest($(this).data('id'));
+					});    
+          </script>
+  <nav>
+  <ul class="pagination justify-content-end">
+  {{if eq .PageId 0}}
+    <li class="page-item disabled">
+  {{else}}
+    <li class="page-item">
+  {{end}}
+      <a class="page-link" href="/page/{{.PageIdBack}}" aria-label="Предыдущая">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+      {{if eq .PageIdNext -1}}
+        <li class="page-item disabled">
+      {{else}}
+        <li class="page-item">
+      {{end}}
+      <a class="page-link" href="/page/{{.PageIdNext}}" aria-label="Следующая">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+  </div>
+{{end}}

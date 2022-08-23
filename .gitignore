@@ -1,0 +1,8 @@
+*.exe
+.vscode/
+/.vscode
+config.go
+vendor/
+/vendor
+*bootstrap*.js
+*bootstrap*.css
